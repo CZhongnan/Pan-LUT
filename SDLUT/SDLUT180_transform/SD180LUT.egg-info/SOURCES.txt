@@ -1,0 +1,11 @@
+setup.py
+SD180LUT/__init__.py
+SD180LUT/pyinterfaces.py
+SD180LUT/version.py
+SD180LUT.egg-info/PKG-INFO
+SD180LUT.egg-info/SOURCES.txt
+SD180LUT.egg-info/dependency_links.txt
+SD180LUT.egg-info/not-zip-safe
+SD180LUT.egg-info/top_level.txt
+SD180LUT/csrc/SD180LUT_transform.cpp
+SD180LUT/csrc/SD180LUT_transform_cuda.cu

@@ -1,0 +1,8 @@
+# ninja log v5
+0	21742	1743051953997434007	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform.o	717a003d1be5f121
+5	37371	1743052049516679258	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a
+6	38141	1743052681845171100	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a
+5	35952	1743125251644766825	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a
+4	36378	1743212944991707148	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a
+4	38417	1743643573411467155	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a
+3	37805	1743659561407639045	/home/caizn/DIRFL/SDLUT/SDLUT_transform/build/temp.linux-x86_64-3.8/SDLUT/csrc/SDLUT_transform_cuda.o	80e09131e8e4bc0a

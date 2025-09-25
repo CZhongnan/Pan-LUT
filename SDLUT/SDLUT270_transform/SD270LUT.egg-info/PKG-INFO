@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: SD270LUT
+Version: 1.0.0
+Summary: Intensity-Aware LookUp Table Transform
+Home-page: UNKNOWN
+Author: ZN Cai
+License: Apache License 2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+
+UNKNOWN
+

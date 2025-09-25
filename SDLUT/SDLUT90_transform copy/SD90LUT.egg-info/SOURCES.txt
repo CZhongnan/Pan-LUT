@@ -1,0 +1,11 @@
+setup.py
+SD90LUT/__init__.py
+SD90LUT/pyinterfaces.py
+SD90LUT/version.py
+SD90LUT.egg-info/PKG-INFO
+SD90LUT.egg-info/SOURCES.txt
+SD90LUT.egg-info/dependency_links.txt
+SD90LUT.egg-info/not-zip-safe
+SD90LUT.egg-info/top_level.txt
+SD90LUT/csrc/SD90LUT_transform.cpp
+SD90LUT/csrc/SD90LUT_transform_cuda.cu

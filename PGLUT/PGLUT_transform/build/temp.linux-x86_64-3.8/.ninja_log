@@ -1,0 +1,13 @@
+# ninja log v5
+0	21855	1742986524360479457	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform.o	22e343a8e6fef384
+1	39235	1742986541748479021	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	20952	1742986750416308294	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform.o	22e343a8e6fef384
+5	38335	1742988484174816327	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	37740	1742988597284827263	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	36559	1742989012479204828	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	37554	1742989595697586936	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	37998	1743038635358013770	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+4	35497	1743039609367460284	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	36945	1743039792466619521	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+27	43483	1751679084037291716	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b
+5	38315	1751679527697245066	/home/caizn/DIRFL/PGLUT/PGLUT_transform/build/temp.linux-x86_64-3.8/PGLUT/csrc/PGLUT_transform_cuda.o	5ff74806e585a81b

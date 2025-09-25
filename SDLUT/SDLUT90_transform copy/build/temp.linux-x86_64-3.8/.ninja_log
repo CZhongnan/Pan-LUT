@@ -1,0 +1,4 @@
+# ninja log v5
+0	23485	1743130686789820320	/home/caizn/DIRFL/SDLUT/SDLUT90_transform/build/temp.linux-x86_64-3.8/SD90LUT/csrc/SD90LUT_transform.o	70493fe8f1ed579e
+4	34851	1743130852078786205	/home/caizn/DIRFL/SDLUT/SDLUT90_transform/build/temp.linux-x86_64-3.8/SD90LUT/csrc/SD90LUT_transform_cuda.o	c6e16076c2bf4429
+29	38973	1743663049696552570	/home/caizn/DIRFL/SDLUT/SDLUT90_transform/build/temp.linux-x86_64-3.8/SD90LUT/csrc/SD90LUT_transform_cuda.o	c6e16076c2bf4429
