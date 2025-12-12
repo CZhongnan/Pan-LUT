@@ -3,7 +3,7 @@
 
 ![WV2-1024.GIF](./WV2-1024.gif)
 
-![wv2_1_1024.GIF](./wv2_1_1024.gif)
+![WV2-1-1024.GIF](./WV2-1-1024.gif)
 
 ## Multi-exposure Image Fusion
 ## Infrared and Visible Image Fusion
