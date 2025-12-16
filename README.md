@@ -4,4 +4,4 @@
 ## Multi-exposure Image Fusion
 ## Infrared and Visible Image Fusion
 ## Medical Image Fusion
-![mef.GIF](./MEF.gif)
+![mif.GIF](./MIF.gif)
