@@ -3,6 +3,6 @@
 ![WV2-1024.GIF](./WV2-1024.gif)
 ## Multi-exposure Image Fusion
 ## Infrared and Visible Image Fusion
-![VIF.GIF](./VIF196.gif)
+![VIF.GIF](./vif591.gif)
 ## Medical Image Fusion
 ![mif.GIF](./MIF.gif)
