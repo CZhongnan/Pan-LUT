@@ -7,6 +7,14 @@
 ```
 conda create -n panlut python=3.8
 conda activate panlut
+torch
+cd PGLUT
+python install setup.py
+cd SDLUT\SDLUT_transform
+python install setup.py
+...
+cd IFLUT
+python install setup.py
 ```
 ## Demo
 ## Pan-sharpening(Remote Sensing Image Fusion)
