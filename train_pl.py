@@ -38,29 +38,8 @@ __dataset__ = {
                "wv3_dataset":Data,
                "GF2_dataset":Data,
                "wv2_dataset":Data,
-               "GF2_dataset_h5":GF2_dataset,
-               "wv3_dataset_h5":wv3_dataset,
-               "qb_dataset_h5":qb_dataset,
-               "tw_dataset":Data,
-               "vif_dataset":VIF_Data,
+    
                }
-class FFTLoss(nn.Module):
-    def __init__(self, loss_f=nn.L1Loss):
-        super(FFTLoss, self).__init__()
-        self.loss = loss_f()
-
-    def forward(self, pred, target):
-        # 图像通常是实数，所以使用 rfft2 (real FFT 2D)
-        # (N, C, H, W)
-        pred_fft = torch.fft.rfft2(pred, dim=(-2, -1), norm='ortho')
-        target_fft = torch.fft.rfft2(target, dim=(-2, -1), norm='ortho')
-        
-        # 计算幅度谱
-        pred_amp = torch.abs(pred_fft)
-        target_amp = torch.abs(target_fft)
-        
-        # 计算幅度谱的损失
-        return self.loss(pred_amp, target_amp)
 class CoolSystem(pl.LightningModule):
     def __init__(self):
         """初始化训练的参数"""
@@ -176,9 +155,6 @@ class CoolSystem(pl.LightningModule):
           scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,T_max=config["trainer"]["total_epochs"],eta_min =self.initlr* 1e-1)
         elif config["optimizer"]["sheduler"] =="CosineAnnealingRestartLR":
           scheduler = CosineAnnealingRestartLR(optimizer=optimizer, periods=[200,600,800], restart_weights=[1,0.5,0.5],eta_min=1e-7)
-        # elif config["optimizer"]["sheduler"] =="CosineAnnealingLR":
-        #   scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,T_max=config["trainer"]["total_epochs"],eta_min =self.initlr* 1e-1)
-        # Sheduler == None时
 
         else:
             scheduler = None
@@ -219,15 +195,10 @@ class CoolSystem(pl.LightningModule):
         """validation step"""
         # read data.
         image_dict, MS_image,PAN_image, gt = data
-        # print(MS_image.min(),MS_image.max())
-        # print(PAN_image.min(),PAN_image.max())
-        # print(image_dict.shape)
-        # taking model output
         with torch.no_grad():
             out  = self.forward(MS_image,PAN_image,image_dict)   
             pred    = out['pred'];
-            # pred = torch.clip(out['pred'],min=0,max=1)
-        # computing loss 
+
             loss = Compute_loss(config,out,PAN_image,gt)
         # computing performance metrics
         max_value = config[config["train_dataset"]]["max_value"]
@@ -249,10 +220,6 @@ class CoolSystem(pl.LightningModule):
         self.log('ssim', c_ssim,sync_dist=True, prog_bar=True)
         self.log('ergas', c_ergas,sync_dist=True, prog_bar=True)
         self.log('sam',c_sam,sync_dist=True, prog_bar=True)
-        # torch.save(out['llut']["0"].state_dict(), "saved_models/LUT0_%.4f.pth" % (c_ssim))
-        # torch.save(out['llut']["1"].state_dict(), "saved_models/LUT1_%.4f.pth" % (c_ssim))
-        # torch.save(out['llut']["2"].state_dict(), "saved_models/LUT2_%.4f.pth" % (c_ssim))
-        #torch.save(out['clut'].state_dict(), "saved_models/LUT8_%.4d.pth" % (self.current_epoch))
         self.trainer.checkpoint_callback.best_model_score #save the best score model
         return {'val_loss': loss, 'psnr': psnr,'ergas':ergas,'sam':sam,'ssim':ssim}
     
@@ -275,9 +242,7 @@ def main():
     parser.add_argument('--local', action='store_true', default=False)
     global args
     args = parser.parse_args()
-    # set resmue
-    # args.resume ='/home/linyl/Workspace/Paper/DIRFL/Experiments/DIRFL/wv2_dataset/EXP1/best_model-epoch:36-psnr:31.4991-ergas:3.0113-sam:0.0751.ckpt'
-    args.resume_ckpt ='/home/linyl/Workspace/Paper/DIRFL/Experiments/DIRFL/wv2_dataset/EXP3/best_model-epoch:999-psnr:42.8972-ergas:0.8094-sam:0.0198.ckpt'
+    args.resume_ckpt =''
 
 
     global config
@@ -290,7 +255,6 @@ def main():
     # wandb log init
     global wandb_logger
     output_dir = './TensorBoardLogs'
-    # logger = WandbLogger(project=config['name']+"-"+config["train_dataset"])
     logger = TensorBoardLogger(name=config['name']+"_"+config["train_dataset"],save_dir = output_dir )
     
     # Setting up path
@@ -311,7 +275,7 @@ def main():
     auto_insert_metric_name=False,   
     every_n_epochs=config["trainer"]["test_freq"],
     save_on_train_epoch_end=True,
-    save_top_k=200,
+    save_top_k=15,
     mode = "max"
     )
     lr_monitor_callback = LearningRateMonitor(logging_interval='step')
@@ -322,7 +286,7 @@ def main():
         max_epochs=config["trainer"]["total_epochs"],
         accelerator='gpu', devices=[0],
         logger=logger,
-        accumulate_grad_batches=4,
+        # accumulate_grad_batches=4,
         # gradient_clip_algorithm="norm",
         # gradient_clip_val=0.5,
         #amp_backend="apex",

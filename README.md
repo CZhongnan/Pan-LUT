@@ -2,6 +2,13 @@
 ## 📮 Updates
 - **[2026.1.6]** The code for our Look-Up Tables is now released!
 ---
+## ⚙️ Environment
+
+```
+conda create -n panlut python=3.8
+conda activate panlut
+```
+## Demo
 ## Pan-sharpening(Remote Sensing Image Fusion)
 ![WV2-1024.GIF](./WV2-1024.gif)
 ## Multi-exposure Image Fusion
