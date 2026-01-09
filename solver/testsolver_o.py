@@ -40,9 +40,6 @@ class Testsolver(BaseSolver):
             self.model_path = os.path.join(self.cfg['test']['model'])
 
             self.model = self.model.cuda(self.gpu_ids[0])
-            # self.model = torch.nn.DataParallel(self.model, device_ids=self.gpu_ids)
-            # self.model.load_state_dict(torch.load(self.model_path, map_location=lambda storage, loc: storage)['net'])
-            # self.model.load_state_dict(torch.load(self.model_path, map_location=lambda storage, loc: storage))
             ckpt = torch.load(self.model_path, map_location=lambda storage, loc: storage)
             new_state_dict = collections.OrderedDict()
             for k in ckpt['state_dict']:

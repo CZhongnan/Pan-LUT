@@ -51,14 +51,6 @@ class Testsolver(BaseSolver):
                             name = k[6:]
                             new_state_dict[name] = ckpt['state_dict'][k]
             self.model.load_state_dict(new_state_dict,strict=True)
-            #  self.LUT = torch.load("/home/caizn/DIRFL/LUTPGF.pth")['LUT']
-            # torch.save(self.model.LUTPGF.state_dict(), "/home/caizn/DIRFL/LUTPG31.8547.pth")
-            # torch.save(self.model.LUT8.state_dict(), "/home/caizn/DIRFL/LUT8.pth")
-            # torch.save(self.model.LUT00.state_dict(), "/home/caizn/DIRFL/LUT00.pth")
-            # torch.save(self.model.LUT01.state_dict(), "/home/caizn/DIRFL/LUT01.pth")
-            # torch.save(self.model.LUT02.state_dict(), "/home/caizn/DIRFL/LUT02.pth")
-            # torch.save(self.model.LUT03.state_dict(), "/home/caizn/DIRFL/LUT03.pth")
-            # torch.save(self.model.LUTPGF.state_dict(), "/home/caizn/DIRFL/LUTPGF.pth")
             
 
 
@@ -72,15 +64,6 @@ class Testsolver(BaseSolver):
                 lms_image = lms_image.cuda(self.gpu_ids[0])
                 pan_image = pan_image.cuda(self.gpu_ids[0])
                 bms_image = bms_image.cuda(self.gpu_ids[0])
-                # print(ms_image.min(),ms_image.max())
-                # print(lms_image.min(),lms_image.max())
-                # print(pan_image.min(),pan_image.max())
-                # print(bms_image.min(),bms_image.max())
-                # print(bms_image.shape)
-                # print(pan_image.shape)
-                # print(bms_image.shape)
-                #print(torch.max(ms_image))
-                #print(torch.min(ms_image))  
             #Pan_image =  [pan_image,lpan_image]
             t0 = time.time()
             with torch.no_grad():
@@ -89,8 +72,6 @@ class Testsolver(BaseSolver):
                 out = self.model(lms_image, pan_image,bms_image)
                 prediction = out["pred"]
                 
-                # pglut = out["ms"]
-                # sdlut = out["p"]
             t1 = time.time()
             # prediction = torch.clip(prediction,min=0,max=1)
             if self.cfg['data']['normalize']:
@@ -104,8 +85,6 @@ class Testsolver(BaseSolver):
             self.save_img(bms_image.cpu().data, name[0][0:-4]+'_bic.tif', mode='CMYK') #
             self.save_img(ms_image.cpu().data, name[0][0:-4]+'_gt.tif', mode='CMYK')
             self.save_img(prediction.cpu().data, name[0][0:-4]+'.tif', mode='CMYK')
-            # self.save_img(pglut.cpu().data, name[0][0:-4]+'_ms.tif',mode='CMYK')
-            # self.save_img(sdlut.cpu().data, name[0][0:-4]+'_p.tif',mode='CMYK')
         print("===> AVG Timer: %.4f sec." % (np.mean(avg_time)))
         
 
