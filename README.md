@@ -18,9 +18,9 @@ python install setup.py
 ```
 ## Demo
 ## Pan-sharpening(Remote Sensing Image Fusion)
-![WV2-1024.GIF](.gif/WV2-1024.gif)
+![WV2-1024.GIF](./gif/WV2-1024.gif)
 ## Multi-exposure Image Fusion
 ## Infrared and Visible Image Fusion
-![VIF.GIF](.gif/vif591.gif)
+![VIF.GIF](./gif/vif591.gif)
 ## Medical Image Fusion
-![mif.GIF](.gif/MIF.gif)
+![mif.GIF](./gif/MIF.gif)
