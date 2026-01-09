@@ -24,3 +24,5 @@ python install setup.py
 ![VIF.GIF](./gif/vif591.gif)
 ## Medical Image Fusion
 ![mif.GIF](./gif/MIF.gif)
+## 🚀 Inference
+## 🔥 Train

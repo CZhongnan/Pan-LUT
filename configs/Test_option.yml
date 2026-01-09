@@ -1,6 +1,6 @@
 algorithm: model
 gpu_mode: True
-gpus: [2]
+gpus: [0]
 threads: 4 #num_works
 
 seed: 123 #123
@@ -84,26 +84,9 @@ test5:  #用于指标测试的代码
   save_dir_rgb: ./result/WV3_rgb/DIRFL/
   test_config_path: ./configs/Train_DiCNN.json
 
-test6:  #用于指标测试的代码
-######################
-  algorithm: model 
-  datatype: MSRS
-  test_data: fullsize
-  type: test
-######################
-  data_dir: /home1/caizn/IVF/MSRS-main/test
-  source_vi: vi
-  source_ir: ir
-  source_fuse: fuse
-  model: /home/caizn/DIRFL/Experiments/models/wv2_dataset/EXP2/best_model-epoch:927-psnr:39.1370-ergas:1.2717-sam:0.0314.ckpt
-  save_dir: ./result/WV3/DIRFL/
-  save_dir_rgb: ./result/WV3_rgb/DIRFL/
-  test_config_path: ./configs/Train_DiCNN.json
-
 data:
   upsacle:  4
   batch_size: 1 #4
-  patch_size: 32
   data_augmentation: False
   n_colors: 4
   rgb_range: 255
