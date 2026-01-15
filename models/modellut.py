@@ -1,31 +1,22 @@
-import torch.nn as nn
-import torch.nn.functional as F
-import torchvision.models as models
-import torchvision.transforms as transforms
-from torch.autograd import Variable
 import torch
+import torch.nn as nn
 import numpy as np
-import math
-from torch.nn import init
 from PGLUT import PGLUT_transform
-from IF4DLUT import IF4DLUT_transform
 from SDLUT import SDLUT_transform
 from SD90LUT import SD90LUT_transform
 from SD180LUT import SD180LUT_transform
 from SD270LUT import SD270LUT_transform
 from IFLUT import IFLUT_transform
-dimPG=9
-dimSD=17
-dimAA=17
-class GeneratorF5DLUT_identity(nn.Module):
-    def __init__(self, dim=dimPG):
+from IF4DLUT import IF4DLUT_transform
+class Generator5DLUT_identity(nn.Module):
+    def __init__(self, dim):
         super(GeneratorF5DLUT_identity, self).__init__()
-        if dim == 9:
-            file = open("Identity5DLUT9.txt", 'r')
-        elif dim == 64:
-            file = open("IdentityLUT64.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+        if dim == 3:
+            file = open(" ", 'r')
+        elif dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,5,dim,dim,dim,dim,dim), dtype=np.float32)
 
@@ -47,15 +38,15 @@ class GeneratorF5DLUT_identity(nn.Module):
         output = PGLUT_transform(x, self.LUT)
         return output
 
-class Generator5DLUT_identity(nn.Module):
-    def __init__(self, dim=dimPG):
+class Generator54DLUT_identity(nn.Module):
+    def __init__(self, dim):
         super(Generator5DLUT_identity, self).__init__()
-        if dim == 9:
-            file = open("Identity5DLUT9.txt", 'r')
-        elif dim == 17:
-            file = open("/home/caizn/DIRFL/IdentityF5DLUT17.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+        if dim == 3:
+            file = open(" ", 'r')
+        elif dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,4,dim,dim,dim,dim,dim), dtype=np.float32)
 
@@ -76,15 +67,15 @@ class Generator5DLUT_identity(nn.Module):
         output = PGLUT_transform(x, self.LUT)
         return output
 
-class Generator3DLUTL5_identity(nn.Module):
-    def __init__(self, dim=dimSD,num_batch=5):
-        super(Generator3DLUTL5_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/4DLUT9.txt", 'r')
-        elif dim == 6:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT6.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+class GeneratorSDLUT_identity(nn.Module):
+    def __init__(self, dim,num_batch):
+        super(GeneratorSDLUT_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open(" ", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -103,15 +94,15 @@ class Generator3DLUTL5_identity(nn.Module):
         return output
     
 
-class Generator3DLUTL90_identity(nn.Module):
+class GeneratorSDLUT90_identity(nn.Module):
     def __init__(self, dim=dimSD,num_batch=5):
-        super(Generator3DLUTL90_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/4DLUT9.txt", 'r')
-        elif dim == 6:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT6.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+        super(GeneratorSDLUT90_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open(" ", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -134,21 +125,11 @@ class Generator3DLUTL90_identity(nn.Module):
         output = SD90LUT_transform(x,self.LUT)
         #self.LUT, output = self.TrilinearInterpolation(self.LUT, x)
         return output
-    def regularizations(self, smoothness, monotonicity):
-        basis_luts = self.LUT
-        tv, mn = 0, 0
-        for i in range(2, basis_luts.ndimension()):
-            diff = torch.diff(basis_luts.flip(i), dim=i)
-            tv += torch.square(diff).sum(0).mean()
-            mn += F.relu(diff).sum(0).mean()
-        reg_smoothness = smoothness * tv
-        reg_monotonicity = monotonicity * mn
-        return reg_smoothness, reg_monotonicity
 
 
-class Generator3DLUTL180_identity(nn.Module):
+class GeneratorSDLUT180_identity(nn.Module):
     def __init__(self, dim=dimSD,num_batch=5):
-        super(Generator3DLUTL180_identity, self).__init__()
+        super(GeneratorSDLUT180_identity, self).__init__()
         if dim == 9:
             file = open("/home/caizn/Awaresome-pansharpening/4DLUT9.txt", 'r')
         elif dim == 6:
@@ -177,16 +158,6 @@ class Generator3DLUTL180_identity(nn.Module):
         output = SD180LUT_transform(x,self.LUT)
         #self.LUT, output = self.TrilinearInterpolation(self.LUT, x)
         return output
-    def regularizations(self, smoothness, monotonicity):
-        basis_luts = self.LUT
-        tv, mn = 0, 0
-        for i in range(2, basis_luts.ndimension()):
-            diff = torch.diff(basis_luts.flip(i), dim=i)
-            tv += torch.square(diff).sum(0).mean()
-            mn += F.relu(diff).sum(0).mean()
-        reg_smoothness = smoothness * tv
-        reg_monotonicity = monotonicity * mn
-        return reg_smoothness, reg_monotonicity
 
 class Generator3DLUTL270_identity(nn.Module):
     def __init__(self, dim=dimSD,num_batch=5):

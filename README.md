@@ -15,6 +15,8 @@ python install setup.py
 ...
 cd IFLUT
 python install setup.py
+cd IF4DLUT
+python install setup.py
 ```
 ## Demo
 ## 🚀 Inference
