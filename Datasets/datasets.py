@@ -7,6 +7,7 @@ from PIL import Image, ImageOps
 from random import randrange
 import torch.nn.functional as F
 from torchvision.transforms import Compose, ToTensor
+import transforms as T
 import cv2
 import h5py
 from glob import glob
@@ -223,3 +224,38 @@ class Data_test(data.Dataset):#self, config, is_train=True,
 
     def __len__(self):
         return len(self.ms_image_filenames)
+
+class VIFData(Dataset):
+    def __init__(self, visible_path, infrared_path, phase="train", transform=None):
+        self.phase = phase
+        self.visible_files = sorted(glob(os.path.join(visible_path, "*.*")))
+        self.infrared_files = sorted(glob(os.path.join(infrared_path, "*.*")))
+        self.transform = transform
+
+    def __len__(self):
+        l = len(self.infrared_files)
+        return l
+
+    def __getitem__(self, item):
+        image_A_path = self.visible_files[item]
+        image_B_path = self.infrared_files[item]
+        image_A = Image.open(image_A_path).convert(mode='RGB')
+        image_B = Image.open(image_B_path).convert(mode='L')   ##########
+
+        # image_A = self.transform(image_A)
+        # image_B = self.transform(image_B)
+
+        if self.transform is not None:
+            image_A = self.transform(image_A)
+            image_B = self.transform(image_B)
+
+        name = image_A_path.replace("\\", "/").split("/")[-1].split(".")[0]
+
+        return image_A, image_B, name
+
+    @staticmethod
+    def collate_fn(batch):
+        images_A, images_B, name = zip(*batch)
+        images_A = torch.stack(images_A, dim=0)
+        images_B = torch.stack(images_B, dim=0)
+        return images_A, images_B, name
