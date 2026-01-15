@@ -42,7 +42,6 @@ def main():
     visible_files = sorted(os.listdir(visible_dir))
 
     assert len(infrared_files) == len(visible_files), "The number of images in the infrared and visible folders do not match!"
-    # target_size = (128, 128)
     times = []
 
     for step, data in enumerate(val_loader):

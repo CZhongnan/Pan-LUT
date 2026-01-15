@@ -17,6 +17,11 @@ cd IFLUT
 python install setup.py
 ```
 ## Demo
+## 🚀 Inference
+```
+python test_VIF.py
+```
+## 🔥 Train
 ## Pan-sharpening(Remote Sensing Image Fusion)
 ![WV2-1024.GIF](./gif/WV2-1024.gif)
 ## Multi-exposure Image Fusion
@@ -24,5 +29,3 @@ python install setup.py
 ![VIF.GIF](./gif/vif591.gif)
 ## Medical Image Fusion
 ![mif.GIF](./gif/MIF.gif)
-## 🚀 Inference
-## 🔥 Train
