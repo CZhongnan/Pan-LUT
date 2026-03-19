@@ -29,7 +29,7 @@ python test_VIF.py
 ## Multi-exposure Image Fusion
 ![MEF.GIF](./gif/mef.gif)
 ## Multi-focus Image Fusion
-![MFF.GIF](./gif/mef.gif)
+![MFF.GIF](./gif/mff.gif)
 ## Infrared and Visible Image Fusion
 ![VIF.GIF](./gif/vif591.gif)
 ## Medical Image Fusion
