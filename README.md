@@ -26,8 +26,10 @@ python test_VIF.py
 ## 🔥 Train
 ## Pan-sharpening(Remote Sensing Image Fusion)
 ![WV2-1024.GIF](./gif/WV2-1024.gif)
+
 ## Multi-exposure Image Fusion
 ![MEF.GIF](./gif/mef.gif)
+
 ## Multi-focus Image Fusion
 ![MFF.GIF](./gif/mff.gif)
 ## Infrared and Visible Image Fusion
