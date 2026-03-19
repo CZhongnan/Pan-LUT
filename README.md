@@ -24,7 +24,7 @@ python install setup.py
 python test_VIF.py
 ```
 ## 🔥 Train
-![MFF.GIF](./gif/mff.gif)
+
 ## Pan-sharpening(Remote Sensing Image Fusion)
 ![WV2-1024.GIF](./gif/WV2-1024.gif)
 ## Multi-exposure Image Fusion
