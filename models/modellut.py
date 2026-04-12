@@ -305,7 +305,7 @@ class Generator43DLUT_identity(nn.Module):
 
 class Generator4DLUTL_identity(nn.Module):
     def __init__(self, dim=17,num_batch=5):
-        super(Generator3DLUTL5_identity, self).__init__()
+        super(Generator4DLUTL_identity, self).__init__()
         if dim == 6:
             file = open(" ", 'r')
         elif dim == 9:
@@ -331,7 +331,7 @@ class Generator4DLUTL_identity(nn.Module):
 
 class Generator4DLUTL90_identity(nn.Module):
     def __init__(self, dim=17,num_batch=5):
-        super(Generator3DLUTL90_identity, self).__init__()
+        super(Generator4DLUTL90_identity, self).__init__()
         if dim == 6:
             file = open(" ", 'r')
         elif dim == 9:
@@ -357,7 +357,7 @@ class Generator4DLUTL90_identity(nn.Module):
 
 class Generator4DLUTL180_identity(nn.Module):
     def __init__(self, dim=17,num_batch=5):
-        super(Generator3DLUTL180_identity, self).__init__()
+        super(Generator4DLUTL180_identity, self).__init__()
         if dim == 6:
             file = open(" ", 'r')
         elif dim == 9:
@@ -382,7 +382,7 @@ class Generator4DLUTL180_identity(nn.Module):
         return output
 class Generator4DLUTL270_identity(nn.Module):
     def __init__(self, dim=17,num_batch=5):
-        super(Generator3DLUTL270_identity, self).__init__()
+        super(Generator4DLUTL270_identity, self).__init__()
         if dim == 6:
             file = open(" ", 'r')
         elif dim == 9:
