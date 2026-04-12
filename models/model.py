@@ -10,10 +10,10 @@ class YCbCrToRGB(object):
 class Net_VIF(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.LUT00 = Generator3DLUTL5_identity(dim=17,num_batch=4) 
-        self.LUT01 = Generator3DLUTL90_identity(dim=17,num_batch=4)
-        self.LUT02 = Generator3DLUTL180_identity(dim=17,num_batch=4)
-        self.LUT03 = Generator3DLUTL270_identity(dim=17,num_batch=4)
+        self.LUT00 = Generator4DLUTL_identity(dim=17,num_batch=4) 
+        self.LUT01 = Generator4DLUTL90_identity(dim=17,num_batch=4)
+        self.LUT02 = Generator4DLUTL180_identity(dim=17,num_batch=4)
+        self.LUT03 = Generator4DLUTL270_identity(dim=17,num_batch=4)
         self.LUT8 = Generator4DLUT_identity(dim=17)
         self.LUTPGF = Generator43DLUT_identity(dim=17)
     def forward(self, vi_image,ir_image):
@@ -35,10 +35,10 @@ class Net_VIF(nn.Module):
 class Net_MEF(nn.Module):
     def __init__(self):
         super(Net_MEF, self).__init__()
-        self.LUT00 = Generator3DLUTL5_identity(dim=17,num_batch=2) 
-        self.LUT01 = Generator3DLUTL90_identity(dim=17,num_batch=2)
-        self.LUT02 = Generator3DLUTL180_identity(dim=17,num_batch=2)
-        self.LUT03 = Generator3DLUTL270_identity(dim=17,num_batch=2)
+        self.LUT00 = Generator4DLUTL_identity(dim=17,num_batch=2) 
+        self.LUT01 = Generator4DLUTL90_identity(dim=17,num_batch=2)
+        self.LUT02 = Generator4DLUTL180_identity(dim=17,num_batch=2)
+        self.LUT03 = Generator4DLUTL270_identity(dim=17,num_batch=2)
         self.LUT8 = Generator2DLUT_identity()
         self.LUTPGF = Generator1DLUT_identity()
         self.LUTCB = Generator1DLUT_identity()

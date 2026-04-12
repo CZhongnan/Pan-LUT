@@ -302,3 +302,106 @@ class Generator43DLUT_identity(nn.Module):
         output = IF4DLUT_transform(x,self.LUT)
         #self.LUT, output = self.PentilinearInterpolation(self.LUT, x)
         return output
+
+class Generator4DLUTL_identity(nn.Module):
+    def __init__(self, dim=17,num_batch=5):
+        super(Generator3DLUTL5_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
+        lines = file.readlines()
+        buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
+
+        for i in range(0,dim):
+            for j in range(0,dim):
+                for k in range(0,dim):
+                    for l in range(0,dim):
+                        n = i * dim*dim*dim + j * dim*dim + k*dim + l
+                        x = lines[n].split()
+                        buffer[0,i,j,k,l] = float(x[0])
+        buffer = torch.from_numpy(buffer).unsqueeze(0).repeat(num_batch,1,1,1,1,1)
+        self.LUT = nn.Parameter(buffer.requires_grad_(True))
+
+    def forward(self, x):
+        output = SDLUT_transform(x,self.LUT)
+        return output
+
+class Generator4DLUTL90_identity(nn.Module):
+    def __init__(self, dim=17,num_batch=5):
+        super(Generator3DLUTL90_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
+        lines = file.readlines()
+        buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
+
+        for i in range(0,dim):
+            for j in range(0,dim):
+                for k in range(0,dim):
+                    for l in range(0,dim):
+                        n = i * dim*dim*dim + j * dim*dim + k*dim + l
+                        x = lines[n].split()
+                        buffer[0,i,j,k,l] = float(x[0])
+        buffer = torch.from_numpy(buffer).unsqueeze(0).repeat(num_batch,1,1,1,1,1)
+        self.LUT = nn.Parameter(buffer.requires_grad_(True))
+
+    def forward(self, x):
+        output = SD90LUT_transform(x,self.LUT)
+        return output
+
+class Generator4DLUTL180_identity(nn.Module):
+    def __init__(self, dim=17,num_batch=5):
+        super(Generator3DLUTL180_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
+        lines = file.readlines()
+        buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
+
+        for i in range(0,dim):
+            for j in range(0,dim):
+                for k in range(0,dim):
+                    for l in range(0,dim):
+                        n = i * dim*dim*dim + j * dim*dim + k*dim + l
+                        x = lines[n].split()
+                        buffer[0,i,j,k,l] = float(x[0])
+        buffer = torch.from_numpy(buffer).unsqueeze(0).repeat(num_batch,1,1,1,1,1)
+        self.LUT = nn.Parameter(buffer.requires_grad_(True))
+
+    def forward(self, x):
+        output = SD180LUT_transform(x,self.LUT)
+        return output
+class Generator4DLUTL270_identity(nn.Module):
+    def __init__(self, dim=17,num_batch=5):
+        super(Generator3DLUTL270_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
+        lines = file.readlines()
+        buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
+
+        for i in range(0,dim):
+            for j in range(0,dim):
+                for k in range(0,dim):
+                    for l in range(0,dim):
+                        n = i * dim*dim*dim + j * dim*dim + k*dim + l
+                        x = lines[n].split()
+                        buffer[0,i,j,k,l] = float(x[0])
+        buffer = torch.from_numpy(buffer).unsqueeze(0).repeat(num_batch,1,1,1,1,1)
+        self.LUT = nn.Parameter(buffer.requires_grad_(True))
+
+    def forward(self, x):
+        output = SD270LUT_transform(x,self.LUT)
+        return output
