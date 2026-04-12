@@ -75,7 +75,7 @@ class GeneratorSDLUT_identity(nn.Module):
         elif dim == 9:
             file = open(" ", 'r')
         elif dim == 17:
-            file = open(" ", 'r')
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -95,14 +95,14 @@ class GeneratorSDLUT_identity(nn.Module):
     
 
 class GeneratorSDLUT90_identity(nn.Module):
-    def __init__(self, dim=dimSD,num_batch=5):
+    def __init__(self, dim,num_batch):
         super(GeneratorSDLUT90_identity, self).__init__()
         if dim == 6:
             file = open(" ", 'r')
         elif dim == 9:
             file = open(" ", 'r')
         elif dim == 17:
-            file = open(" ", 'r')
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -128,14 +128,14 @@ class GeneratorSDLUT90_identity(nn.Module):
 
 
 class GeneratorSDLUT180_identity(nn.Module):
-    def __init__(self, dim=dimSD,num_batch=5):
+    def __init__(self, dim,num_batch):
         super(GeneratorSDLUT180_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/4DLUT9.txt", 'r')
-        elif dim == 6:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT6.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -159,15 +159,15 @@ class GeneratorSDLUT180_identity(nn.Module):
         #self.LUT, output = self.TrilinearInterpolation(self.LUT, x)
         return output
 
-class Generator3DLUTL270_identity(nn.Module):
-    def __init__(self, dim=dimSD,num_batch=5):
-        super(Generator3DLUTL270_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/4DLUT9.txt", 'r')
-        elif dim == 6:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT6.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+class GeneratorSDLUT270_identity(nn.Module):
+    def __init__(self, dim,num_batch):
+        super(GeneratorSDLUT270_identity, self).__init__()
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
+        elif dim == 17:
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim,dim,dim), dtype=np.float32)
 
@@ -193,11 +193,11 @@ class Generator2DLUT_identity(nn.Module):
     def __init__(self, dim=251):
         super(Generator2DLUT_identity, self).__init__()
         if dim == 33:
-            file = open("/home/caizn/Shuffle-Mamba/MIF/IdentityLUT33.txt", 'r')
+            file = open(" ", 'r')
         elif dim == 64:
-            file = open("/home/caizn/Shuffle-Mamba/MIF/IdentityLUT64.txt", 'r')
+            file = open(" ", 'r')
         elif dim == 251:
-            file = open("/home/caizn/LUT-Fuse/models/2DLUT251.txt", 'r')
+            file = open("./2DLUT251.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((2,dim,dim), dtype=np.float32)
 
@@ -215,15 +215,15 @@ class Generator2DLUT_identity(nn.Module):
         output = IFLUT_transform(x,self.LUT)
         #self.LUT, output = self.PentilinearInterpolation(self.LUT, x)
         return output
-class Generator1DLUT_identity(nn.Module):
+class Generator21DLUT_identity(nn.Module):
     def __init__(self, dim=251):
-        super(Generator1DLUT_identity, self).__init__()
+        super(Generator21DLUT_identity, self).__init__()
         if dim == 33:
-            file = open("/home/caizn/Shuffle-Mamba/MIF/IdentityLUT33.txt", 'r')
+            file = open(" ", 'r')
         elif dim == 64:
-            file = open("/home/caizn/Shuffle-Mamba/MIF/IdentityLUT64.txt", 'r')
+            file = open(" ", 'r')
         elif dim == 251:
-            file = open("/home/caizn/LUT-Fuse/models/2DLUT251.txt", 'r')
+            file = open("./2DLUT251.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((1,dim,dim), dtype=np.float32)
 
@@ -244,12 +244,12 @@ class Generator1DLUT_identity(nn.Module):
 class Generator4DLUT_identity(nn.Module):
     def __init__(self, dim=dimAA):
         super(Generator4DLUT_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT9.txt", 'r')
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
         elif dim == 17:
-            file = open("/home/caizn/Mask-DiFuser/models/Identity4DLUT17.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((4,dim,dim,dim,dim), dtype=np.float32)
 
@@ -275,12 +275,12 @@ class Generator4DLUT_identity(nn.Module):
 class Generator43DLUT_identity(nn.Module):
     def __init__(self, dim=dimAA):
         super(Generator43DLUT_identity, self).__init__()
-        if dim == 9:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT9.txt", 'r')
+        if dim == 6:
+            file = open(" ", 'r')
+        elif dim == 9:
+            file = open(" ", 'r')
         elif dim == 17:
-            file = open("/home/caizn/Mask-DiFuser/models/Identity4DLUT17.txt", 'r')
-        elif dim == 3:
-            file = open("/home/caizn/Awaresome-pansharpening/Identity5DLUT3.txt", 'r')
+            file = open("./4DLUT17.txt", 'r')
         lines = file.readlines()
         buffer = np.zeros((3,dim,dim,dim,dim), dtype=np.float32)
 

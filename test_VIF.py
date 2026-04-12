@@ -17,7 +17,7 @@ def main():
     save_dir = "/home/caizn/LUT-Fuse/resultstest"
     os.makedirs(save_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model=Net()
+    model=Net_VIF()
     # get_context = Generator_for_info()
     model.load_state_dict(torch.load("./checkpoint/MSRS.pth"))
     model = model.to(device)

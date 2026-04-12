@@ -7,15 +7,15 @@ class YCbCrToRGB(object):
                             img[:, 0, :, :] - (img[:, 1, :, :] - 128 / 256.) * 0.344136 - (img[:, 2, :, :] - 128 / 256.) * 0.714136,
                             img[:, 0, :, :] + (img[:, 1, :, :] - 128 / 256.) * 1.772),
                             dim=1)
-class Net(nn.Module):
+class Net_VIF(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.LUT00 = Generator3DLUTL5_identity(num_batch=4) 
-        self.LUT01 = Generator3DLUTL90_identity(num_batch=4)
-        self.LUT02 = Generator3DLUTL180_identity(num_batch=4)
-        self.LUT03 = Generator3DLUTL270_identity(num_batch=4)
-        self.LUT8 = Generator4DLUT_identity()
-        self.LUTPGF = Generator43DLUT_identity()
+        self.LUT00 = Generator3DLUTL5_identity(dim=17,num_batch=4) 
+        self.LUT01 = Generator3DLUTL90_identity(dim=17,num_batch=4)
+        self.LUT02 = Generator3DLUTL180_identity(dim=17,num_batch=4)
+        self.LUT03 = Generator3DLUTL270_identity(dim=17,num_batch=4)
+        self.LUT8 = Generator4DLUT_identity(dim=17)
+        self.LUTPGF = Generator43DLUT_identity(dim=17)
     def forward(self, vi_image,ir_image):
         # print(vi_image.shape)
         con0  = torch.cat([vi_image,ir_image],dim=1)
