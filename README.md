@@ -19,10 +19,10 @@ cd IF4DLUT
 python install setup.py
 ```
 ## Demo
+```
+python demo.py --task vif --image_A ./a.png --image_B ./b.png --out ./result.png
+```
 ## 🚀 Inference
-```
-python test_VIF.py
-```
 ## 🔥 Train
 
 ## Pan-sharpening(Remote Sensing Image Fusion)
