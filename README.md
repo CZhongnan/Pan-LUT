@@ -8,14 +8,14 @@
 conda create -n panlut python=3.8
 conda activate panlut
 pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113
-cd PGLUT
+cd PGLUT\PGLUT_transform
 python install setup.py
 cd SDLUT\SDLUT_transform
 python install setup.py
 ...
-cd IFLUT
+cd IFLUT\IFLUT_transform
 python install setup.py
-cd IF4DLUT
+cd IF4DLUT\IF4DLUT_transform
 python install setup.py
 ```
 ## Demo
