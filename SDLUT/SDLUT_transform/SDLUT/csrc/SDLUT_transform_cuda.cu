@@ -452,19 +452,6 @@ void SDLUTTransformBackwardCUDAKernelLauncher(
 
     int num_kernels =  height * width;
     for (int elt = 0; elt < num_channels; ++elt) {
-        // Print tensor shapes
-        // printf("grad_output[0][%d] shape: (%ld, %ld, %ld)\n", elt, 
-        //        (long)grad_output[0][elt].size(0), (long)grad_output[0][elt].size(1));
-        // printf("input[0][%d] shape: (%ld, %ld, %ld)\n", elt, 
-        //        (long)input[0][elt].size(0), (long)input[0][elt].size(1));
-        // printf("lut[0][%d] shape: (%ld, %ld, %ld, %ld, %ld)\n", elt, 
-        //        (long)lut[0][elt].size(0), (long)lut[0][elt].size(1), (long)lut[0][elt].size(2), 
-        //        (long)lut[0][elt].size(3));
-        // printf("grad_inp[0][%d] shape: (%ld, %ld, %ld)\n", elt, 
-        //        (long)grad_inp[0][elt].size(0), (long)grad_inp[0][elt].size(1));
-        // printf("grad_lut[0][%d] shape: (%ld, %ld, %ld, %ld, %ld)\n", elt, 
-        //        (long)grad_lut[0][elt].size(0), (long)grad_lut[0][elt].size(1), (long)grad_lut[0][elt].size(2), 
-        //        (long)grad_lut[0][elt].size(3));
 
         /* launch the CUDA kernel */
         AT_DISPATCH_FLOATING_TYPES(
