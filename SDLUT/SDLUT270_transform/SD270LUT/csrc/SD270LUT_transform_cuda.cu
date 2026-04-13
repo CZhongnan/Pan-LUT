@@ -31,45 +31,7 @@ inline __device__ constexpr const scalar_t& clamp(
 
 
 /* binary search on a sorted array to find and clamp the lower bound */
-template <typename scalar_t>
-inline __device__ int32_t lower_bound(
-        const scalar_t *data_ss,
-        int32_t start,
-        int32_t end,
-        scalar_t val) {
 
-    const int32_t ori_start = start;
-    const int32_t upper_bound = end - start - 2;
-    while (start < end) {
-        int64_t mid = start + ((end - start) >> 1);
-        if (!(data_ss[mid] >= val)) {
-            start = mid + 1;
-        }
-        else {
-            end = mid;
-        }
-    }
-    return clamp(start - ori_start - 1, 0, upper_bound);
-}
-
-
-void sd270lut_transform_sanity_check(
-    const torch::Tensor input, const torch::Tensor lut, torch::Tensor output) {
-
-    TORCH_CHECK((input.ndimension() == 4),
-                "4D input tensor (b, c, h, w) expected, but got: ",
-                input.ndimension());
-    TORCH_CHECK((input.size(1) == 5),
-                "5-channel img expected, but got: ",
-                input.size(1));
-    TORCH_CHECK((lut.ndimension() == (input.size(1) + 2)),
-                (input.size(1) + 2),
-                "D lut tensor (b, m, d[, d, [d, [d]]]) expected, but got: ",
-                lut.ndimension());
-    TORCH_CHECK((input.size(0) == lut.size(0)),
-                "input and lut should have identical batch size, but got: ",
-                "input (", input.size(0), "), lut (", lut.size(0),")");
-}
 
 
 template <typename scalar_t>
