@@ -19,11 +19,6 @@ class SDLUTTransformFunction(torch.autograd.Function):
         img = img.contiguous()
         lut = lut.contiguous()
 
-        assert img.ndimension() == 4, \
-            "only support 2D image with batch and channel dimensions (4D tensor)"
-        assert lut.ndimension() in [6], \
-            "only support 5D lookup table without batch dimension (5D tensor)"
-
         output = img.new_zeros((img.size(0), lut.size(0), img.size(2), img.size(3)))
         SDLUT_cforward(img, lut, output)
 
