@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from models.modellut import *
+import torch.nn.functional as F
 class YCbCrToRGB(object):
     def __call__(self, img):
         return torch.stack((img[:, 0, :, :] + (img[:, 2, :, :] - 128 / 256.) * 1.402,
@@ -40,9 +41,9 @@ class Net_MEF(nn.Module):
         self.LUT02 = Generator4DLUTL180_identity(dim=17,num_batch=2)
         self.LUT03 = Generator4DLUTL270_identity(dim=17,num_batch=2)
         self.LUT8 = Generator2DLUT_identity()
-        self.LUTPGF = Generator1DLUT_identity()
-        self.LUTCB = Generator1DLUT_identity()
-        self.LUTCR = Generator1DLUT_identity()
+        self.LUTPGF = Generator21DLUT_identity()
+        self.LUTCB = Generator21DLUT_identity()
+        self.LUTCR = Generator21DLUT_identity()
 
     def forward(self, A_image,B_image,cb,cr):
         con0  = torch.cat([A_image,B_image],dim=1)
