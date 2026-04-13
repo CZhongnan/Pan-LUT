@@ -20,7 +20,7 @@ python setup.py install
 ```
 ## Demo
 ```
-python demo.py --task vif --image_A ./demoimg/input/00040N_vi.png --image_B D:/myproject/Pan-LUT/demoimg/input/00040N_ir.png --out ./demoimg/result_vif.png
+python demo.py --task vif --image_A ./demoimg/input/00040N_vi.png --image_B ./demoimg/input/00040N_ir.png --out ./demoimg/result_vif.png
 python demo.py --task mef --image_A ./demoimg/input/over.jpg --image_B ./demoimg/input/under.jpg --out ./demoimg/result_mef.png
 python demo.py --task mff --image_A ./demoimg/input/far.jpg --image_B ./demoimg/input/near.jpg --out ./demoimg/result_mff.png
 ```
